@@ -450,7 +450,9 @@ class _PaintMetrics {
   void _calculateMetrics() {
     final gapTotal = (moduleCount - 1) * gapSize;
     var pixelSize = (containerSize - gapTotal) / moduleCount;
-    _pixelSize = (pixelSize * 2).roundToDouble() / 2;
+    // 这种算法会导致，二维码超出容器
+    // _pixelSize = (pixelSize * 2).roundToDouble() / 2;
+    _pixelSize = pixelSize;
     _innerContentSize = (_pixelSize * moduleCount) + gapTotal;
     _inset = (containerSize - _innerContentSize) / 2;
   }
